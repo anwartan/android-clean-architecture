@@ -10,8 +10,11 @@ import com.example.mealapp.core.domain.model.Meal
 import com.example.mealapp.core.domain.repository.IMealRepository
 import com.example.mealapp.core.utils.AppExecutors
 import com.example.mealapp.core.utils.DataMapper
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class MealRepository(
+@Singleton
+class MealRepository @Inject constructor(
     private val remoteDataSource: RemoteDataSource,
     private val localDataSource: LocalDataSource,
     private val appExecutors: AppExecutors

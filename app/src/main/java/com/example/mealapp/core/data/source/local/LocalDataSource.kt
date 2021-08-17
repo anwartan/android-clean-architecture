@@ -3,8 +3,11 @@ package com.example.mealapp.core.data.source.local
 import androidx.lifecycle.LiveData
 import com.example.mealapp.core.data.source.local.entity.MealEntity
 import com.example.mealapp.core.data.source.local.room.MealDao
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class LocalDataSource (private val mealDao:MealDao){
+@Singleton
+class LocalDataSource @Inject constructor (private val mealDao:MealDao){
 
 //    companion object{
 //        private var instance: LocalDataSource?=null

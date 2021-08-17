@@ -4,8 +4,9 @@ import androidx.lifecycle.LiveData
 import com.example.mealapp.core.data.Resource
 import com.example.mealapp.core.domain.model.Meal
 import com.example.mealapp.core.domain.repository.IMealRepository
+import javax.inject.Inject
 
-class MealInteractor(private val mealRepository: IMealRepository):MealUsecase {
+class MealInteractor @Inject constructor(private val mealRepository: IMealRepository):MealUsecase {
     override fun getAllMeal(): LiveData<Resource<List<Meal>>> {
         return mealRepository.getAllMeal()
     }

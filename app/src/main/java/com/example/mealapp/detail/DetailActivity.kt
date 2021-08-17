@@ -1,25 +1,32 @@
 package com.example.mealapp.detail
 
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
+import com.example.mealapp.MyApplication
 import com.example.mealapp.R
 import com.example.mealapp.core.domain.model.Meal
 import com.example.mealapp.core.ui.ViewModelFactory
 import com.example.mealapp.databinding.ActivityDetailBinding
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import javax.inject.Inject
 
 
 class DetailActivity : AppCompatActivity() {
     companion object {
         const val EXTRA_DATA = "extra_data"
     }
-    private val detailViewModel: DetailViewModel by viewModel()
+    @Inject
+    lateinit var factory: ViewModelFactory
+    private val detailViewModel: DetailViewModel by viewModels {
+        factory
+    }
     private lateinit var binding: ActivityDetailBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        (application as MyApplication).appComponent.inject(this)
+
         super.onCreate(savedInstanceState)
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -32,6 +39,8 @@ class DetailActivity : AppCompatActivity() {
 
 
     }
+
+
 
     private fun showDetailMeal(detailMeal: Meal?) {
         detailMeal?.let {

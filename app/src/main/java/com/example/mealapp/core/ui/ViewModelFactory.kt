@@ -1,15 +1,16 @@
 package com.example.mealapp.core.ui
 
-import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.mealapp.core.di.Injection
 import com.example.mealapp.core.domain.usecase.MealUsecase
 import com.example.mealapp.detail.DetailViewModel
+import com.example.mealapp.di.AppScope
 import com.example.mealapp.favorite.FavoriteViewModel
 import com.example.mealapp.home.HomeViewModel
+import javax.inject.Inject
 
-class ViewModelFactory private constructor(private val mealUsecase: MealUsecase):ViewModelProvider.NewInstanceFactory() {
+@AppScope
+class ViewModelFactory @Inject constructor(private val mealUsecase: MealUsecase):ViewModelProvider.NewInstanceFactory() {
 
 //    companion object {
 //        @Volatile

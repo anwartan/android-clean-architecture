@@ -2,7 +2,6 @@ package com.example.mealapp.core.domain.repository
 
 import androidx.lifecycle.LiveData
 import com.example.mealapp.core.data.Resource
-import com.example.mealapp.core.data.source.local.entity.MealEntity
 import com.example.mealapp.core.domain.model.Meal
 
 interface IMealRepository {

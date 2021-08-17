@@ -1,32 +1,22 @@
 package com.example.mealapp
 
 import android.app.Application
-import com.example.mealapp.core.di.databaseModule
-import com.example.mealapp.core.di.networkModule
-import com.example.mealapp.core.di.repositoryModule
-import com.example.mealapp.di.useCaseModule
-import com.example.mealapp.di.viewModelModule
-import org.koin.android.ext.koin.androidContext
-import org.koin.android.ext.koin.androidLogger
-import org.koin.core.context.startKoin
-import org.koin.core.logger.Level
+import com.example.mealapp.core.di.CoreComponent
+import com.example.mealapp.core.di.DaggerCoreComponent
+import com.example.mealapp.di.AppComponent
+import com.example.mealapp.di.DaggerAppComponent
 
 class MyApplication :Application() {
+    private val coreComponent: CoreComponent by lazy {
+        DaggerCoreComponent.factory().create(applicationContext)
+    }
+
+    val appComponent: AppComponent by lazy {
+        DaggerAppComponent.factory().create(coreComponent)
+    }
     override fun onCreate() {
         super.onCreate()
         //using koin
-        startKoin {
-            androidLogger(Level.NONE)
-            androidContext(this@MyApplication)
-            modules(
-                listOf(
-                    databaseModule,
-                    networkModule,
-                    repositoryModule,
-                    useCaseModule,
-                    viewModelModule
-                )
-            )
-        }
+
     }
 }

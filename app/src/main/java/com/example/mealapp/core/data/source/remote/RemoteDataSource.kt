@@ -10,8 +10,11 @@ import com.example.mealapp.core.data.source.remote.response.MealResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class RemoteDataSource (private val apiService: ApiService) {
+@Singleton
+class RemoteDataSource @Inject constructor (private val apiService: ApiService) {
 
 //    companion object{
 //        private var instance: RemoteDataSource?=null
