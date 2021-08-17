@@ -14,5 +14,6 @@
     <string name="error_message">Oops... something went wrong</string>
     <string name="something_wrong">Something Wrong</string>
     <string name="empty_data">Empty Data</string>
+    <string name="title_area">area</string>
 
 </resources>
