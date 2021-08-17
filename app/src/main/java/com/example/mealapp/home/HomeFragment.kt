@@ -6,12 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mealapp.R
 import com.example.mealapp.core.data.Resource
 import com.example.mealapp.core.ui.MealAdapter
-import com.example.mealapp.core.ui.ViewModelFactory
 import com.example.mealapp.databinding.FragmentHomeBinding
 import com.example.mealapp.detail.DetailActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -34,7 +32,7 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         if (activity != null) {
 
-            val mealAdapter = MealAdapter()
+            val mealAdapter = com.example.mealapp.core.ui.MealAdapter()
             mealAdapter.onItemClick = { selectedData ->
                 val intent = Intent(activity, DetailActivity::class.java)
                 intent.putExtra(DetailActivity.EXTRA_DATA, selectedData)
@@ -44,12 +42,12 @@ class HomeFragment : Fragment() {
             homeViewModel.meal.observe(viewLifecycleOwner, { meal ->
                 if (meal != null) {
                     when (meal) {
-                        is Resource.Loading -> binding.progressBar.visibility = View.VISIBLE
-                        is Resource.Success -> {
+                        is com.example.mealapp.core.data.Resource.Loading -> binding.progressBar.visibility = View.VISIBLE
+                        is com.example.mealapp.core.data.Resource.Success -> {
                             binding.progressBar.visibility = View.GONE
                             mealAdapter.setData(meal.data)
                         }
-                        is Resource.Error -> {
+                        is com.example.mealapp.core.data.Resource.Error -> {
                             binding.progressBar.visibility = View.GONE
                             binding.viewError.root.visibility = View.VISIBLE
                             binding.viewError.tvError.text = meal.message ?: getString(R.string.something_wrong)

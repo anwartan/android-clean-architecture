@@ -3,11 +3,9 @@ package com.example.mealapp.detail
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.example.mealapp.R
 import com.example.mealapp.core.domain.model.Meal
-import com.example.mealapp.core.ui.ViewModelFactory
 import com.example.mealapp.databinding.ActivityDetailBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

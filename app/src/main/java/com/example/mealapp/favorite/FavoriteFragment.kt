@@ -29,7 +29,7 @@ class FavoriteFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         if(activity!=null){
-            val mealAdapter =MealAdapter()
+            val mealAdapter = com.example.mealapp.core.ui.MealAdapter()
 
             favoriteViewModel.favoriteMeal.observe(viewLifecycleOwner, { dataMeal ->
                 mealAdapter.setData(dataMeal)
